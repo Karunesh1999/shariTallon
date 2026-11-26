@@ -1,10 +1,17 @@
 import { useState, type FormEvent } from "react"
-import { Calendar, CheckCircle2, Clock, Video } from "lucide-react"
+import { format } from "date-fns"
+import { Calendar as CalendarIcon, CheckCircle2, Clock, Video } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
+import { Calendar } from "@/components/ui/calendar"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 import {
   Select,
   SelectContent,
@@ -12,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { cn } from "@/lib/utils"
 
 const enquiryOptions = [
   "Book a Free 15-Minute Zoom Lesson Consultation",
@@ -59,7 +67,9 @@ export function ContactBookingsPage() {
   // Online lesson appointment scheduler state
   const [sessionType, setSessionType] = useState(sessionTypes[0])
   const [instrument, setInstrument] = useState(instruments[0])
-  const [appointmentDate, setAppointmentDate] = useState("")
+  const [appointmentDate, setAppointmentDate] = useState<Date | undefined>(undefined)
+  const [calendarOpen, setCalendarOpen] = useState(false)
+  const [dateError, setDateError] = useState(false)
   const [selectedTime, setSelectedTime] = useState(timeSlots[0])
   const [studentName, setStudentName] = useState("")
   const [studentEmail, setStudentEmail] = useState("")
@@ -72,14 +82,23 @@ export function ContactBookingsPage() {
 
   const handleBookAppointment = (e: FormEvent) => {
     e.preventDefault()
+    if (!appointmentDate) {
+      setDateError(true)
+      return
+    }
+    setDateError(false)
     setAppointmentBooked(true)
   }
+
+  const formattedDate = appointmentDate
+    ? format(appointmentDate, "PPP")
+    : "Flexible"
 
   const mailtoSubject = encodeURIComponent(
     `Online Lesson Appointment: ${sessionType} (${instrument})`
   )
   const mailtoBody = encodeURIComponent(
-    `Hi Shari,\n\nI would like to book an online appointment:\n- Session: ${sessionType}\n- Instrument/Focus: ${instrument}\n- Date: ${appointmentDate || "Flexible"}\n- Time: ${selectedTime} (EST)\n- Name: ${studentName}\n- Email: ${studentEmail}\n\nThank you!`
+    `Hi Shari,\n\nI would like to book an online appointment:\n- Session: ${sessionType}\n- Instrument/Focus: ${instrument}\n- Date: ${formattedDate}\n- Time: ${selectedTime} (EST)\n- Name: ${studentName}\n- Email: ${studentEmail}\n\nThank you!`
   )
 
   return (
@@ -272,7 +291,7 @@ export function ContactBookingsPage() {
                   <span>15-min Consultation or 30-min Trial Lesson</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-light-primary shrink-0" />
+                  <CalendarIcon className="h-4 w-4 text-light-primary shrink-0" />
                   <span>Kids, Adults &amp; Exceptional Students Welcome</span>
                 </div>
               </div>
@@ -319,13 +338,45 @@ export function ContactBookingsPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1.5">
                   <Label htmlFor="appointment-date">Preferred Date *</Label>
-                  <Input
-                    id="appointment-date"
-                    type="date"
-                    required
-                    value={appointmentDate}
-                    onChange={(e) => setAppointmentDate(e.target.value)}
-                  />
+                  <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
+                    <PopoverTrigger asChild>
+                      <button
+                        id="appointment-date"
+                        type="button"
+                        className={cn(
+                          "flex w-full items-center justify-between rounded-md border bg-light-surface px-4 py-3 font-body text-body-md text-left transition-colors duration-state-change focus:outline-none focus:border-light-primary focus:ring-1 focus:ring-light-primary cursor-pointer",
+                          dateError
+                            ? "border-red-500"
+                            : "border-light-outline",
+                          !appointmentDate && "text-light-on-surface-variant/60"
+                        )}
+                      >
+                        <span>
+                          {appointmentDate
+                            ? format(appointmentDate, "PPP")
+                            : "Pick a date"}
+                        </span>
+                        <CalendarIcon className="h-4 w-4 text-light-on-surface-variant shrink-0" />
+                      </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-3" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={appointmentDate}
+                        onSelect={(date) => {
+                          setAppointmentDate(date)
+                          setDateError(false)
+                          if (date) setCalendarOpen(false)
+                        }}
+                        disabled={{ before: new Date(new Date().setHours(0, 0, 0, 0)) }}
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  {dateError && (
+                    <span className="font-body text-body-sm text-red-600">
+                      Please select a preferred date.
+                    </span>
+                  )}
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <Label>Preferred Time (EST)</Label>
@@ -379,7 +430,7 @@ export function ContactBookingsPage() {
                     <span className="inline-flex items-center gap-1.5 font-body text-body-sm text-light-primary">
                       <CheckCircle2 className="h-4 w-4 shrink-0" />
                       <span>
-                        Slot requested: {appointmentDate} at {selectedTime} EST
+                        Slot requested: {formattedDate} at {selectedTime} EST
                       </span>
                     </span>
                     <a
