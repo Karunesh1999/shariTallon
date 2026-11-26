@@ -43,7 +43,7 @@ export function HomePage() {
               <img
                 src="/images/hero/shari-flute-outdoors.jpg"
                 alt="Shari Tallon smiling outdoors holding her silver flute"
-                className="w-full aspect-[4/5] object-cover"
+                className="w-full aspect-[4/5] object-cover object-top"
               />
             </div>
             <div className="col-span-5 flex flex-col gap-gutter-md">
@@ -51,7 +51,7 @@ export function HomePage() {
                 <img
                   src="/images/hero/shari-piano-live.jpg"
                   alt="Shari Tallon performing live at the piano"
-                  className="w-full aspect-square object-cover"
+                  className="w-full aspect-square object-cover object-top"
                 />
               </div>
               <div className="rounded-xl bg-light-surface-container p-5 border border-light-outline">

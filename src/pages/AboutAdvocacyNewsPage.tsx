@@ -15,7 +15,7 @@ export function AboutAdvocacyNewsPage() {
             <img
               src="/images/hero/shari-flute-portrait.jpg"
               alt="Portrait of Shari Tallon with her flute"
-              className="w-full aspect-[4/5] object-cover rounded-xl border border-light-outline"
+              className="w-full aspect-[4/5] object-cover object-top rounded-xl border border-light-outline"
             />
           </div>
           <div className="lg:col-span-7 flex flex-col gap-gutter-md">

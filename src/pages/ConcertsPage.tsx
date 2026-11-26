@@ -163,11 +163,11 @@ export function ConcertsPage() {
               </Button>
             </div>
           </div>
-          <div className="lg:col-span-6 order-1 lg:order-2">
+          <div className="lg:col-span-6 order-1 lg:order-2 flex justify-center">
             <img
               src="/images/concerts/shari-flute-live.jpg"
               alt="Shari Tallon performing flute live"
-              className="w-full aspect-[4/3] object-cover rounded-xl border border-light-outline"
+              className="w-full max-w-md aspect-[3/4] object-cover object-top rounded-xl border border-light-outline"
             />
           </div>
         </div>
