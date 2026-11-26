@@ -140,14 +140,13 @@ export function MusicAndMediaPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter-lg">
               {filteredItems.map((item) =>
                 item.youtubeId ? (
-                  <button
-                    key={item.id}
-                    id={item.id}
-                    type="button"
-                    onClick={() => setActiveVideo(item)}
-                    className="group text-left bg-light-surface-container-high border border-light-outline rounded-xl overflow-hidden hover:border-light-primary transition-colors duration-state-change cursor-pointer"
-                  >
-                    <div className="relative aspect-video overflow-hidden">
+                  <div key={item.id} id={item.id} className="flex flex-col gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setActiveVideo(item)}
+                      aria-label={`Play ${item.title}`}
+                      className="group relative aspect-video w-full bg-light-surface-container-high border border-light-outline rounded-xl overflow-hidden hover:border-light-primary transition-colors duration-state-change cursor-pointer"
+                    >
                       <img
                         src={item.image}
                         alt={item.alt}
@@ -161,19 +160,19 @@ export function MusicAndMediaPage() {
                           />
                         </span>
                       </div>
-                    </div>
-                    <div className="p-5">
+                    </button>
+                    <div className="px-1">
                       <span className="font-label text-label-md text-light-primary">
                         {item.tag}
                       </span>
-                      <h2 className="font-headline text-title-lg text-light-on-surface mt-1 group-hover:text-light-primary transition-colors">
+                      <h2 className="font-headline text-title-lg text-light-on-surface mt-0.5">
                         {item.title}
                       </h2>
                       <p className="font-body text-body-sm text-light-on-surface-variant mt-1">
                         {item.description}
                       </p>
                     </div>
-                  </button>
+                  </div>
                 ) : (
                   <a
                     key={item.id}
@@ -181,21 +180,21 @@ export function MusicAndMediaPage() {
                     href={item.externalUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group bg-light-surface-container-high border border-light-outline rounded-xl overflow-hidden hover:border-light-primary transition-colors duration-state-change"
+                    className="group flex flex-col gap-3"
                   >
-                    <div className="relative aspect-video overflow-hidden">
+                    <div className="relative aspect-video w-full bg-light-surface-container-high border border-light-outline rounded-xl overflow-hidden group-hover:border-light-primary transition-colors duration-state-change">
                       <img
                         src={item.image}
                         alt={item.alt}
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <div className="p-5">
+                    <div className="px-1">
                       <span className="inline-flex items-center gap-1 font-label text-label-md text-light-primary">
                         <span>{item.tag}</span>
                         <ExternalLink className="h-3 w-3" aria-hidden="true" />
                       </span>
-                      <h2 className="font-headline text-title-lg text-light-on-surface mt-1 group-hover:text-light-primary transition-colors">
+                      <h2 className="font-headline text-title-lg text-light-on-surface mt-0.5 group-hover:text-light-primary transition-colors">
                         {item.title}
                       </h2>
                       <p className="font-body text-body-sm text-light-on-surface-variant mt-1">
