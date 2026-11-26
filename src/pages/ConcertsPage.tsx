@@ -215,7 +215,7 @@ export function ConcertsPage() {
                 </Button>
                 <Button variant="outline" size="sm" asChild>
                   <a
-                    href="https://www.gigsalad.com/"
+                    href="https://www.gigsalad.com/shari_tallon_music"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -246,13 +246,13 @@ export function ConcertsPage() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter-lg">
               {concertVideos.map((video) => (
-                <button
-                  key={video.youtubeId}
-                  type="button"
-                  onClick={() => setActiveVideo(video)}
-                  className="group text-left bg-light-surface-container-high border border-light-outline rounded-xl overflow-hidden hover:border-light-primary transition-colors duration-state-change cursor-pointer"
-                >
-                  <div className="relative aspect-video overflow-hidden">
+                <div key={video.youtubeId} className="flex flex-col gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setActiveVideo(video)}
+                    aria-label={`Play ${video.title}`}
+                    className="group relative aspect-video w-full bg-light-surface-container-high border border-light-outline rounded-xl overflow-hidden hover:border-light-primary transition-colors duration-state-change cursor-pointer"
+                  >
                     <img
                       src={video.image}
                       alt={video.alt}
@@ -266,16 +266,16 @@ export function ConcertsPage() {
                         />
                       </span>
                     </div>
-                  </div>
-                  <div className="p-4">
-                    <p className="font-headline text-title-lg text-light-on-surface group-hover:text-light-primary transition-colors">
+                  </button>
+                  <div className="px-1">
+                    <p className="font-headline text-title-lg text-light-on-surface">
                       {video.title}
                     </p>
                     <p className="font-body text-body-sm text-light-on-surface-variant">
                       {video.subtitle}
                     </p>
                   </div>
-                </button>
+                </div>
               ))}
             </div>
           </div>

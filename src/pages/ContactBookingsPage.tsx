@@ -103,7 +103,7 @@ export function ContactBookingsPage() {
                 Online Lesson Portal
               </a>
               <a
-                href="https://www.gigsalad.com/"
+                href="https://www.gigsalad.com/shari_tallon_music"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-full bg-light-surface-container-high border border-light-outline font-label text-label-md text-light-on-surface hover:border-light-primary transition-colors"

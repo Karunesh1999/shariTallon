@@ -41,6 +41,80 @@ export function LessonsAndSchoolsPage() {
         </div>
       </section>
 
+      {/* Program Categories */}
+      <section className="py-section-sm lg:py-section-lg bg-light-surface-container-low border-t border-light-outline">
+        <div className="w-full px-6 md:px-10 lg:px-14 xl:px-20 flex flex-col gap-gutter-xl">
+          <div className="max-w-2xl">
+            <span className="font-label text-label-md text-light-primary uppercase tracking-wider">
+              Explore by Category
+            </span>
+            <h2 className="font-headline text-headline-lg-mobile lg:text-headline-lg text-light-on-surface mt-2">
+              Programs &amp; Specialized Music Education
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter-lg items-stretch">
+            <Link
+              to="/preschoolers"
+              className="group bg-light-surface-container-high border border-light-outline rounded-xl overflow-hidden flex flex-col h-full hover:border-light-primary transition-colors duration-state-change"
+            >
+              <div className="aspect-[16/10] w-full overflow-hidden">
+                <img
+                  src="/images/preschoolers/preschoolers-keyboards.jpg"
+                  alt="Preschoolers exploring keyboards and percussion with Shari"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-6 flex flex-col gap-2 flex-1 justify-between">
+                <div>
+                  <h3 className="font-headline text-headline-sm text-light-on-surface group-hover:text-light-primary transition-colors duration-state-change">
+                    Music for Preschoolers &amp; Babies
+                  </h3>
+                  <p className="font-body text-body-md text-light-on-surface-variant mt-2">
+                    Toddle Tunes, Rainbow Rockers, Music for Little Mozarts, and
+                    Keyboards for Casa—nurturing physical, social, and emotional
+                    growth.
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-1.5 font-label text-label-lg text-light-primary pt-3">
+                  <span>Explore Preschool Programs</span>
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </span>
+              </div>
+            </Link>
+
+            <Link
+              to="/exceptional-students"
+              className="group bg-light-surface-container-high border border-light-outline rounded-xl overflow-hidden flex flex-col h-full hover:border-light-primary transition-colors duration-state-change"
+            >
+              <div className="aspect-[16/10] w-full overflow-hidden">
+                <img
+                  src="/images/lessons/daniel-and-shari.jpg"
+                  alt="Shari Tallon with an exceptional music student at the piano"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div className="p-6 flex flex-col gap-2 flex-1 justify-between">
+                <div>
+                  <h3 className="font-headline text-headline-sm text-light-on-surface group-hover:text-light-primary transition-colors duration-state-change">
+                    Exceptional Students
+                  </h3>
+                  <p className="font-body text-body-md text-light-on-surface-variant mt-2">
+                    Over two decades of individualized guitar, keyboard, and
+                    piano sessions tailored to each student&apos;s sensory
+                    profile and musical joy.
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-1.5 font-label text-label-lg text-light-primary pt-3">
+                  <span>Read About Exceptionalities</span>
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </span>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Kids & Adult Lessons */}
       <section
         id="kids-lessons"
