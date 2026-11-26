@@ -71,13 +71,13 @@ export function HomePage() {
       {/* Featured Piano & Flute Performance + Video */}
       <section className="py-section-sm lg:py-section-lg bg-light-surface-container-low border-y border-light-outline">
         <div className="w-full px-6 md:px-10 lg:px-14 xl:px-20 grid grid-cols-1 lg:grid-cols-12 gap-gutter-xl items-center">
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-6 flex flex-col gap-3">
             <Card className="overflow-hidden">
               <div className="relative aspect-video bg-light-surface-container">
                 <img
                   src="/images/concerts/rain-and-sunshine-thumb.png"
                   alt="Rain and Sunshine — Shari Tallon performing flute and piano live"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
                 <button
                   type="button"
@@ -90,26 +90,26 @@ export function HomePage() {
                   </span>
                 </button>
               </div>
-              <div className="p-5 flex items-center justify-between gap-4">
-                <div>
-                  <p className="font-headline text-title-lg text-light-on-surface">
-                    Rain and Sunshine (Movement II)
-                  </p>
-                  <p className="font-body text-body-sm text-light-on-surface-variant">
-                    Performed live online with Shari on both flute and piano
-                  </p>
-                </div>
-                <a
-                  href="https://sharitallon.bandcamp.com/album/sunday-serenade-live"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 font-label text-label-lg text-light-primary hover:underline shrink-0"
-                >
-                  <span>Bandcamp</span>
-                  <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
-                </a>
-              </div>
             </Card>
+            <div className="px-1 flex items-center justify-between gap-4">
+              <div>
+                <p className="font-headline text-title-lg text-light-on-surface">
+                  Rain and Sunshine (Movement II)
+                </p>
+                <p className="font-body text-body-sm text-light-on-surface-variant">
+                  Performed live online with Shari on both flute and piano
+                </p>
+              </div>
+              <a
+                href="https://sharitallon.bandcamp.com/album/sunday-serenade-live"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 font-label text-label-lg text-light-primary hover:underline shrink-0"
+              >
+                <span>Bandcamp</span>
+                <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+              </a>
+            </div>
           </div>
 
           <div className="lg:col-span-6 flex flex-col gap-gutter-md">
@@ -227,30 +227,28 @@ export function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter-lg items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter-xl items-start">
             <Link
               to="/preschoolers"
-              className="group bg-light-surface-container-high border border-light-outline rounded-xl overflow-hidden flex flex-col h-full hover:border-light-primary transition-colors duration-state-change"
+              className="group flex flex-col gap-4"
             >
-              <div className="aspect-[16/10] w-full overflow-hidden">
+              <div className="aspect-[16/10] w-full rounded-xl overflow-hidden border border-light-outline bg-light-surface-container-high group-hover:border-light-primary transition-colors duration-state-change">
                 <img
                   src="/images/preschoolers/preschoolers-keyboards.jpg"
                   alt="Preschoolers exploring keyboards and percussion with Shari"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
-              <div className="p-6 flex flex-col gap-2 flex-1 justify-between">
-                <div>
-                  <h3 className="font-headline text-headline-sm text-light-on-surface group-hover:text-light-primary transition-colors duration-state-change">
-                    Music for Preschoolers &amp; Babies
-                  </h3>
-                  <p className="font-body text-body-md text-light-on-surface-variant mt-2">
-                    Toddle Tunes, Rainbow Rockers, Music for Little Mozarts, and
-                    Keyboards for Casa—nurturing physical, social, and emotional
-                    growth.
-                  </p>
-                </div>
-                <span className="inline-flex items-center gap-1.5 font-label text-label-lg text-light-primary pt-3">
+              <div className="flex flex-col gap-1.5 px-1">
+                <h3 className="font-headline text-headline-sm text-light-on-surface group-hover:text-light-primary transition-colors duration-state-change">
+                  Music for Preschoolers &amp; Babies
+                </h3>
+                <p className="font-body text-body-md text-light-on-surface-variant">
+                  Toddle Tunes, Rainbow Rockers, Music for Little Mozarts, and
+                  Keyboards for Casa—nurturing physical, social, and emotional
+                  growth.
+                </p>
+                <span className="inline-flex items-center gap-1.5 font-label text-label-lg text-light-primary pt-1.5">
                   <span>Explore Preschool Programs</span>
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </span>
@@ -259,27 +257,25 @@ export function HomePage() {
 
             <Link
               to="/lessons-schools"
-              className="group bg-light-surface-container-high border border-light-outline rounded-xl overflow-hidden flex flex-col h-full hover:border-light-primary transition-colors duration-state-change"
+              className="group flex flex-col gap-4"
             >
-              <div className="aspect-[16/10] w-full overflow-hidden">
+              <div className="aspect-[16/10] w-full rounded-xl overflow-hidden border border-light-outline bg-light-surface-container-high group-hover:border-light-primary transition-colors duration-state-change">
                 <img
                   src="/images/lessons/school-concert.jpg"
                   alt="Shari Tallon leading a funded school music concert"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
-              <div className="p-6 flex flex-col gap-2 flex-1 justify-between">
-                <div>
-                  <h3 className="font-headline text-headline-sm text-light-on-surface group-hover:text-light-primary transition-colors duration-state-change">
-                    Lessons, Schools &amp; 100% MPTF Funding
-                  </h3>
-                  <p className="font-body text-body-md text-light-on-surface-variant mt-2">
-                    Private online and in-studio lessons for kids &amp; adults
-                    (Piano, Flute, Guitar, Ukulele, Voice), plus 100% funded
-                    K–12 school concerts for 2026/27.
-                  </p>
-                </div>
-                <span className="inline-flex items-center gap-1.5 font-label text-label-lg text-light-primary pt-3">
+              <div className="flex flex-col gap-1.5 px-1">
+                <h3 className="font-headline text-headline-sm text-light-on-surface group-hover:text-light-primary transition-colors duration-state-change">
+                  Lessons, Schools &amp; 100% MPTF Funding
+                </h3>
+                <p className="font-body text-body-md text-light-on-surface-variant">
+                  Private online and in-studio lessons for kids &amp; adults
+                  (Piano, Flute, Guitar, Ukulele, Voice), plus 100% funded
+                  K–12 school concerts for 2026/27.
+                </p>
+                <span className="inline-flex items-center gap-1.5 font-label text-label-lg text-light-primary pt-1.5">
                   <span>Explore Lessons &amp; Schools</span>
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </span>
@@ -288,27 +284,25 @@ export function HomePage() {
 
             <Link
               to="/exceptional-students"
-              className="group bg-light-surface-container-high border border-light-outline rounded-xl overflow-hidden flex flex-col h-full hover:border-light-primary transition-colors duration-state-change"
+              className="group flex flex-col gap-4"
             >
-              <div className="aspect-[16/10] w-full overflow-hidden">
+              <div className="aspect-[16/10] w-full rounded-xl overflow-hidden border border-light-outline bg-light-surface-container-high group-hover:border-light-primary transition-colors duration-state-change">
                 <img
                   src="/images/lessons/daniel-and-shari.jpg"
                   alt="Shari Tallon with an exceptional music student at the piano"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
-              <div className="p-6 flex flex-col gap-2 flex-1 justify-between">
-                <div>
-                  <h3 className="font-headline text-headline-sm text-light-on-surface group-hover:text-light-primary transition-colors duration-state-change">
-                    Exceptional Students
-                  </h3>
-                  <p className="font-body text-body-md text-light-on-surface-variant mt-2">
-                    Over two decades of individualized guitar, keyboard, and
-                    piano sessions tailored to each student&apos;s sensory
-                    profile and musical joy.
-                  </p>
-                </div>
-                <span className="inline-flex items-center gap-1.5 font-label text-label-lg text-light-primary pt-3">
+              <div className="flex flex-col gap-1.5 px-1">
+                <h3 className="font-headline text-headline-sm text-light-on-surface group-hover:text-light-primary transition-colors duration-state-change">
+                  Exceptional Students
+                </h3>
+                <p className="font-body text-body-md text-light-on-surface-variant">
+                  Over two decades of individualized guitar, keyboard, and
+                  piano sessions tailored to each student&apos;s sensory
+                  profile and musical joy.
+                </p>
+                <span className="inline-flex items-center gap-1.5 font-label text-label-lg text-light-primary pt-1.5">
                   <span>Read About Exceptionalities</span>
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </span>
@@ -317,27 +311,25 @@ export function HomePage() {
 
             <Link
               to="/about-news"
-              className="group bg-light-surface-container-high border border-light-outline rounded-xl overflow-hidden flex flex-col h-full hover:border-light-primary transition-colors duration-state-change"
+              className="group flex flex-col gap-4"
             >
-              <div className="aspect-[16/10] w-full overflow-hidden">
+              <div className="aspect-[16/10] w-full rounded-xl overflow-hidden border border-light-outline bg-light-surface-container-high group-hover:border-light-primary transition-colors duration-state-change">
                 <img
                   src="/images/news/artists-against-homelessness.png"
                   alt="Shari Tallon interviewed on Bullet Point News for Artists Against Homelessness"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
-              <div className="p-6 flex flex-col gap-2 flex-1 justify-between">
-                <div>
-                  <h3 className="font-headline text-headline-sm text-light-on-surface group-hover:text-light-primary transition-colors duration-state-change">
-                    Advocacy, TEDx Countdown &amp; News
-                  </h3>
-                  <p className="font-body text-body-md text-light-on-surface-variant mt-2">
-                    Supporting mental health charities (CAMH, Mood Disorders
-                    Society of Canada), TEDx Countdown, and Artists Against
-                    Homelessness.
-                  </p>
-                </div>
-                <span className="inline-flex items-center gap-1.5 font-label text-label-lg text-light-primary pt-3">
+              <div className="flex flex-col gap-1.5 px-1">
+                <h3 className="font-headline text-headline-sm text-light-on-surface group-hover:text-light-primary transition-colors duration-state-change">
+                  Advocacy, TEDx Countdown &amp; News
+                </h3>
+                <p className="font-body text-body-md text-light-on-surface-variant">
+                  Supporting mental health charities (CAMH, Mood Disorders
+                  Society of Canada), TEDx Countdown, and Artists Against
+                  Homelessness.
+                </p>
+                <span className="inline-flex items-center gap-1.5 font-label text-label-lg text-light-primary pt-1.5">
                   <span>Read Story &amp; Press</span>
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </span>

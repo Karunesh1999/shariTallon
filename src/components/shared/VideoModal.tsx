@@ -1,11 +1,8 @@
-import { ExternalLink } from "lucide-react"
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
 
 interface VideoModalProps {
   open: boolean
@@ -19,21 +16,13 @@ export function VideoModal({
   open,
   onOpenChange,
   title,
-  subtitle,
   youtubeId,
 }: VideoModalProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="p-4 sm:p-6">
-        <DialogHeader>
-          <DialogTitle>{title}</DialogTitle>
-          {subtitle && (
-            <p className="font-body text-body-sm text-light-on-surface-variant">
-              {subtitle}
-            </p>
-          )}
-        </DialogHeader>
-        <div className="aspect-video w-full overflow-hidden rounded-lg border border-light-outline bg-light-on-surface/5">
+      <DialogContent className="p-0 overflow-hidden border-0 bg-black shadow-2xl [&>button]:bg-black/60 [&>button]:text-white [&>button]:hover:bg-black/80 [&>button]:hover:text-white [&>button]:right-3 [&>button]:top-3 [&>button]:z-10">
+        <DialogTitle className="sr-only">{title}</DialogTitle>
+        <div className="aspect-video w-full">
           {open && (
             <iframe
               className="w-full h-full"
@@ -44,20 +33,7 @@ export function VideoModal({
             />
           )}
         </div>
-        <div className="flex justify-end">
-          <Button variant="outline" size="sm" asChild>
-            <a
-              href={`https://www.youtube.com/watch?v=${youtubeId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span>Watch on YouTube</span>
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </Button>
-        </div>
       </DialogContent>
     </Dialog>
   )
 }
-

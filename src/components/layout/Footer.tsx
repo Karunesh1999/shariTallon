@@ -1,5 +1,95 @@
 import { Link } from "react-router-dom"
 
+function YoutubeIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" />
+      <path d="m10 15 5-3-5-3v6Z" />
+    </svg>
+  )
+}
+
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  )
+}
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  )
+}
+
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </svg>
+  )
+}
+
+function LinkedinIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect width="4" height="12" x="2" y="9" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  )
+}
+
 export function Footer() {
   return (
     <footer className="bg-light-surface-container-low border-t border-light-outline py-section-sm">
@@ -94,17 +184,19 @@ export function Footer() {
             href="https://www.youtube.com/@sharitallon"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-body text-body-sm text-light-on-surface-variant hover:text-light-primary transition-colors"
+            className="inline-flex items-center gap-2 font-body text-body-sm text-light-on-surface-variant hover:text-light-primary transition-colors"
           >
-            YouTube
+            <YoutubeIcon className="h-4 w-4 shrink-0" />
+            <span>YouTube</span>
           </a>
           <a
             href="https://www.facebook.com/shari.tallonmusic/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-body text-body-sm text-light-on-surface-variant hover:text-light-primary transition-colors"
+            className="inline-flex items-center gap-2 font-body text-body-sm text-light-on-surface-variant hover:text-light-primary transition-colors"
           >
-            Facebook
+            <FacebookIcon className="h-4 w-4 shrink-0" />
+            <span>Facebook</span>
           </a>
         </div>
       </div>
@@ -113,30 +205,33 @@ export function Footer() {
         <p className="font-body text-body-sm text-light-on-surface-variant">
           Copyright © 2026 Shari Tallon Music — All Rights Reserved.
         </p>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-5">
           <a
             href="https://www.instagram.com/sharipiano"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-body text-body-sm text-light-on-surface-variant hover:text-light-primary transition-colors"
+            className="inline-flex items-center gap-1.5 font-body text-body-sm text-light-on-surface-variant hover:text-light-primary transition-colors"
           >
-            Instagram
+            <InstagramIcon className="h-4 w-4 shrink-0" />
+            <span>Instagram</span>
           </a>
           <a
             href="https://www.tiktok.com/@sharitallonmusic"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-body text-body-sm text-light-on-surface-variant hover:text-light-primary transition-colors"
+            className="inline-flex items-center gap-1.5 font-body text-body-sm text-light-on-surface-variant hover:text-light-primary transition-colors"
           >
-            TikTok
+            <TikTokIcon className="h-4 w-4 shrink-0" />
+            <span>TikTok</span>
           </a>
           <a
             href="https://www.linkedin.com/in/shari-tallon-45745810"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-body text-body-sm text-light-on-surface-variant hover:text-light-primary transition-colors"
+            className="inline-flex items-center gap-1.5 font-body text-body-sm text-light-on-surface-variant hover:text-light-primary transition-colors"
           >
-            LinkedIn
+            <LinkedinIcon className="h-4 w-4 shrink-0" />
+            <span>LinkedIn</span>
           </a>
         </div>
       </div>

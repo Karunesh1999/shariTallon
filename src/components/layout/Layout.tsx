@@ -16,7 +16,8 @@ export function Layout({ children }: LayoutProps) {
       const el = document.getElementById(id)
       if (el) {
         setTimeout(() => {
-          el.scrollIntoView({ behavior: "smooth" })
+          const top = el.getBoundingClientRect().top + window.scrollY - 80
+          window.scrollTo({ top, behavior: "smooth" })
         }, 50)
         return
       }

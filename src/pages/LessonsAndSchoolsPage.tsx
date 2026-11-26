@@ -10,7 +10,7 @@ export function LessonsAndSchoolsPage() {
         <div className="w-full px-6 md:px-10 lg:px-14 xl:px-20 grid grid-cols-1 lg:grid-cols-12 gap-gutter-xl items-center">
           <div className="lg:col-span-7 flex flex-col gap-gutter-md">
             <span className="font-label text-label-md text-light-primary uppercase tracking-wider">
-              Online &amp; In-Studio · Ontario
+              Online &amp; In-Studio
             </span>
             <h1 className="font-display text-display-lg-mobile lg:text-display-lg text-light-on-surface text-balance">
               Music Lessons, Schools &amp; Community Programs
@@ -226,7 +226,7 @@ export function LessonsAndSchoolsPage() {
             <img
               src="/images/lessons/school-concert.jpg"
               alt="Shari Tallon performing for school students"
-              className="w-full aspect-[4/3] object-cover rounded-xl border border-light-outline"
+              className="w-full aspect-[4/3] object-cover object-top rounded-xl border border-light-outline"
             />
           </div>
         </div>
