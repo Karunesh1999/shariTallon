@@ -1,48 +1,8 @@
 import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { ChevronDown, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
-
-interface DropdownLinkItem {
-  label: string
-  to: string
-}
-
-const concertsMenu: DropdownLinkItem[] = [
-  { label: "All Concerts & Overview", to: "/concerts" },
-  { label: "Concert Pianist", to: "/concerts#pianist" },
-  { label: "Flute Performances", to: "/concerts#flute" },
-  { label: "House Concerts", to: "/concerts#house-concerts" },
-  { label: "Kids & Family Concerts", to: "/concerts#family-concerts" },
-  { label: "Concert Videos", to: "/concerts#videos" },
-]
-
-const lessonsMenu: DropdownLinkItem[] = [
-  { label: "Lessons & Schools Overview", to: "/lessons-schools" },
-  { label: "Music Lessons for Kids", to: "/lessons-schools#kids-lessons" },
-  { label: "Music Lessons for Adults", to: "/lessons-schools#adult-lessons" },
-  { label: "Music for Preschoolers", to: "/preschoolers" },
-  { label: "Community Center Programs", to: "/lessons-schools#community-centers" },
-  { label: "Music for Exceptional Students", to: "/exceptional-students" },
-  { label: "Funding for Schools (100% Grant)", to: "/lessons-schools#funding-schools" },
-  { label: "Performance Arts for Kids", to: "/lessons-schools#creative-players" },
-]
-
-const musicMenu: DropdownLinkItem[] = [
-  { label: "All Music & Media", to: "/music-media" },
-  { label: "Piano Music", to: "/music-media#piano-music" },
-  { label: "Shari on Flute", to: "/music-media#flute-music" },
-  { label: "Singer / Songwriter", to: "/music-media#singer-songwriter" },
-  { label: "The Free Spirits", to: "/music-media#free-spirits" },
-  { label: "Shari's Music Store", to: "/music-media#music-store" },
-]
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -60,7 +20,7 @@ export function Header() {
 
   const navLinkClass = (active: boolean) =>
     cn(
-      "font-label text-label-lg py-1 whitespace-nowrap transition-colors duration-state-change outline-none cursor-pointer",
+      "font-label text-label-lg py-1 whitespace-nowrap transition-colors duration-state-change",
       active
         ? "text-light-primary border-b-2 border-light-primary"
         : "text-light-on-surface-variant hover:text-light-primary"
@@ -87,64 +47,21 @@ export function Header() {
           <Link to="/" className={navLinkClass(isActive("/"))}>
             Home
           </Link>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              className={cn(
-                "inline-flex items-center gap-1",
-                navLinkClass(isActive("/concerts"))
-              )}
-            >
-              <span>Concerts</span>
-              <ChevronDown className="h-4 w-4 shrink-0" aria-hidden="true" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-60">
-              {concertsMenu.map((item) => (
-                <DropdownMenuItem key={item.to} asChild>
-                  <Link to={item.to}>{item.label}</Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              className={cn(
-                "inline-flex items-center gap-1",
-                navLinkClass(isLessonsGroup)
-              )}
-            >
-              <span>Lessons &amp; Schools</span>
-              <ChevronDown className="h-4 w-4 shrink-0" aria-hidden="true" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-64">
-              {lessonsMenu.map((item) => (
-                <DropdownMenuItem key={item.to} asChild>
-                  <Link to={item.to}>{item.label}</Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              className={cn(
-                "inline-flex items-center gap-1",
-                navLinkClass(isActive("/music-media"))
-              )}
-            >
-              <span>Music &amp; Media</span>
-              <ChevronDown className="h-4 w-4 shrink-0" aria-hidden="true" />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-60">
-              {musicMenu.map((item) => (
-                <DropdownMenuItem key={item.to} asChild>
-                  <Link to={item.to}>{item.label}</Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
+          <Link to="/concerts" className={navLinkClass(isActive("/concerts"))}>
+            Concerts
+          </Link>
+          <Link
+            to="/lessons-schools"
+            className={navLinkClass(isLessonsGroup)}
+          >
+            Lessons &amp; Schools
+          </Link>
+          <Link
+            to="/music-media"
+            className={navLinkClass(isActive("/music-media"))}
+          >
+            Music &amp; Media
+          </Link>
           <Link
             to="/about-news"
             className={navLinkClass(isActive("/about-news"))}
