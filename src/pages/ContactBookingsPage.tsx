@@ -4,14 +4,29 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
+const enquiryOptions = [
+  "Book a Free 15-Minute Zoom Lesson Consultation",
+  "House Concert / Private Event / Wedding",
+  "Kids & Family Concert (Library, Festival, Fair)",
+  "100% Funded School Concert / Workshop (MPTF)",
+  "Preschool / Montessori / Community Center Program",
+  "Exceptional Students Music Session",
+  "General Question or Media Enquiry",
+]
 
 export function ContactBookingsPage() {
   const [submitted, setSubmitted] = useState(false)
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
-  const [enquiryType, setEnquiryType] = useState(
-    "Book a Free 15-Minute Zoom Lesson Consultation"
-  )
+  const [enquiryType, setEnquiryType] = useState(enquiryOptions[0])
   const [message, setMessage] = useState("")
 
   const handleSubmit = (e: FormEvent) => {
@@ -150,20 +165,18 @@ export function ContactBookingsPage() {
 
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="enquiry-type">Enquiry Type</Label>
-              <select
-                id="enquiry-type"
-                value={enquiryType}
-                onChange={(e) => setEnquiryType(e.target.value)}
-                className="w-full rounded-md border border-light-outline bg-light-surface px-4 py-3 font-body text-body-md text-light-on-surface focus:outline-none focus:border-light-primary focus:ring-1 focus:ring-light-primary"
-              >
-                <option>Book a Free 15-Minute Zoom Lesson Consultation</option>
-                <option>House Concert / Private Event / Wedding</option>
-                <option>Kids &amp; Family Concert (Library, Festival, Fair)</option>
-                <option>100% Funded School Concert / Workshop (MPTF)</option>
-                <option>Preschool / Montessori / Community Center Program</option>
-                <option>Exceptional Students Music Session</option>
-                <option>General Question or Media Enquiry</option>
-              </select>
+              <Select value={enquiryType} onValueChange={setEnquiryType}>
+                <SelectTrigger id="enquiry-type">
+                  <SelectValue placeholder="Select enquiry type" />
+                </SelectTrigger>
+                <SelectContent>
+                  {enquiryOptions.map((option) => (
+                    <SelectItem key={option} value={option}>
+                      {option}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="flex flex-col gap-1.5">

@@ -2,14 +2,21 @@ import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { ChevronDown, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
 
-interface DropdownItem {
+interface DropdownLinkItem {
   label: string
   to: string
 }
 
-const concertsMenu: DropdownItem[] = [
+const concertsMenu: DropdownLinkItem[] = [
+  { label: "All Concerts & Overview", to: "/concerts" },
   { label: "Concert Pianist", to: "/concerts#pianist" },
   { label: "Flute Performances", to: "/concerts#flute" },
   { label: "House Concerts", to: "/concerts#house-concerts" },
@@ -17,7 +24,8 @@ const concertsMenu: DropdownItem[] = [
   { label: "Concert Videos", to: "/concerts#videos" },
 ]
 
-const lessonsMenu: DropdownItem[] = [
+const lessonsMenu: DropdownLinkItem[] = [
+  { label: "Lessons & Schools Overview", to: "/lessons-schools" },
   { label: "Music Lessons for Kids", to: "/lessons-schools#kids-lessons" },
   { label: "Music Lessons for Adults", to: "/lessons-schools#adult-lessons" },
   { label: "Music for Preschoolers", to: "/preschoolers" },
@@ -27,7 +35,8 @@ const lessonsMenu: DropdownItem[] = [
   { label: "Performance Arts for Kids", to: "/lessons-schools#creative-players" },
 ]
 
-const musicMenu: DropdownItem[] = [
+const musicMenu: DropdownLinkItem[] = [
+  { label: "All Music & Media", to: "/music-media" },
   { label: "Piano Music", to: "/music-media#piano-music" },
   { label: "Shari on Flute", to: "/music-media#flute-music" },
   { label: "Singer / Songwriter", to: "/music-media#singer-songwriter" },
@@ -51,7 +60,7 @@ export function Header() {
 
   const navLinkClass = (active: boolean) =>
     cn(
-      "font-label text-label-lg py-1 whitespace-nowrap transition-colors duration-state-change",
+      "font-label text-label-lg py-1 whitespace-nowrap transition-colors duration-state-change outline-none cursor-pointer",
       active
         ? "text-light-primary border-b-2 border-light-primary"
         : "text-light-on-surface-variant hover:text-light-primary"
@@ -79,9 +88,8 @@ export function Header() {
             Home
           </Link>
 
-          <div className="relative group">
-            <Link
-              to="/concerts"
+          <DropdownMenu>
+            <DropdownMenuTrigger
               className={cn(
                 "inline-flex items-center gap-1",
                 navLinkClass(isActive("/concerts"))
@@ -89,25 +97,18 @@ export function Header() {
             >
               <span>Concerts</span>
               <ChevronDown className="h-4 w-4 shrink-0" aria-hidden="true" />
-            </Link>
-            <div className="hidden group-hover:block absolute left-0 top-full pt-2 w-60 z-50">
-              <div className="bg-light-surface-container-high border border-light-outline rounded-lg p-2 flex flex-col gap-1 shadow-sm">
-                {concertsMenu.map((item) => (
-                  <Link
-                    key={item.to}
-                    to={item.to}
-                    className="px-3 py-2 rounded-sm font-body text-body-sm text-light-on-surface hover:bg-light-surface-container-low transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-60">
+              {concertsMenu.map((item) => (
+                <DropdownMenuItem key={item.to} asChild>
+                  <Link to={item.to}>{item.label}</Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
 
-          <div className="relative group">
-            <Link
-              to="/lessons-schools"
+          <DropdownMenu>
+            <DropdownMenuTrigger
               className={cn(
                 "inline-flex items-center gap-1",
                 navLinkClass(isLessonsGroup)
@@ -115,25 +116,18 @@ export function Header() {
             >
               <span>Lessons &amp; Schools</span>
               <ChevronDown className="h-4 w-4 shrink-0" aria-hidden="true" />
-            </Link>
-            <div className="hidden group-hover:block absolute left-0 top-full pt-2 w-64 z-50">
-              <div className="bg-light-surface-container-high border border-light-outline rounded-lg p-2 flex flex-col gap-1 shadow-sm">
-                {lessonsMenu.map((item) => (
-                  <Link
-                    key={item.to}
-                    to={item.to}
-                    className="px-3 py-2 rounded-sm font-body text-body-sm text-light-on-surface hover:bg-light-surface-container-low transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-64">
+              {lessonsMenu.map((item) => (
+                <DropdownMenuItem key={item.to} asChild>
+                  <Link to={item.to}>{item.label}</Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
 
-          <div className="relative group">
-            <Link
-              to="/music-media"
+          <DropdownMenu>
+            <DropdownMenuTrigger
               className={cn(
                 "inline-flex items-center gap-1",
                 navLinkClass(isActive("/music-media"))
@@ -141,21 +135,15 @@ export function Header() {
             >
               <span>Music &amp; Media</span>
               <ChevronDown className="h-4 w-4 shrink-0" aria-hidden="true" />
-            </Link>
-            <div className="hidden group-hover:block absolute left-0 top-full pt-2 w-60 z-50">
-              <div className="bg-light-surface-container-high border border-light-outline rounded-lg p-2 flex flex-col gap-1 shadow-sm">
-                {musicMenu.map((item) => (
-                  <Link
-                    key={item.to}
-                    to={item.to}
-                    className="px-3 py-2 rounded-sm font-body text-body-sm text-light-on-surface hover:bg-light-surface-container-low transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-60">
+              {musicMenu.map((item) => (
+                <DropdownMenuItem key={item.to} asChild>
+                  <Link to={item.to}>{item.label}</Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
 
           <Link
             to="/about-news"
